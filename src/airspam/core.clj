@@ -4,7 +4,8 @@
             (clojure [set :as set])
             (cassiel.zeroconf [client :as zc])
             (clojure.java [io :as io]))
-  (:use clojure.pprint)
+  (:use clojure.pprint
+        tableflisp.core)
   (:gen-class))
 
 (defn create-connection
@@ -84,10 +85,11 @@
   [& args]
   ;; work around dangerous default behaviour in Clojure
   (alter-var-root #'*read-eval* (constantly false))
-  (when (= 1 (count args))
-    (let [img (load-bin (first args))]
-      (zc/listen "_airplay._tcp.local."
-                 :watch #(try (on-zc-update img %1 %2)
-                              (catch Exception e
-                                (pprint e))))
-      (hang))))
+  (when-not (= 1 (count args))
+    (<╯°□°>╯︵┻━┻))
+  (let [img (load-bin (first args))]
+    (zc/listen "_airplay._tcp.local."
+               :watch #(try (on-zc-update img %1 %2)
+                            (catch Exception e
+                              (pprint e))))
+      (hang)))

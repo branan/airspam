@@ -5,5 +5,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [clj-http "0.7.3"]
-                 [eu.cassiel/clojure-zeroconf "1.1.0"]]
+                 [eu.cassiel/clojure-zeroconf "1.1.0"]
+                 [tableflisp "0.1.0-SNAPSHOT"]]
   :main airspam.core)
